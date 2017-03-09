@@ -1,4 +1,5 @@
 $(function () {
+    var _file_count = 0;
     //disease add modal js
     $(".disease-add-type-btn").click(function (event) {
         event.preventDefault();
@@ -48,13 +49,29 @@ $(function () {
         //test
         alert($('input[name="genefile"]').prop('files').length);
         //tpl inut into tbody
-        $('.files-display-area-tbody').html(uploadItem.join('')).end().show();
+        $('.files-display-area-tbody').append(uploadItem.join('')).end().show();
     })
+
+    /**
+     * 上传文件时选取对应的文件item
+     */
+    function findTheFile(fileName){
+        var files = $('input[name="genefile"]').prop('files'),
+            properFile;
+        for(var i = 0;i < files.length;i++){
+            if(files[i].name == fileName){
+                properFile = files[i];
+                break;
+            }
+        }
+        return properFile ? properFile : [];
+    }
     /**
      * form submit listener
      */
-    $('.upload_items_btn').on('click', function (event) {
+    $('.upload_file_item_btn_0').on('click', function (event) {
         event.preventDefault();
+        alert('hello,world');
         var _this = $(this),
             state = _this.attr('data-state'),
             fileName = _this.attr('data-name'),
@@ -66,20 +83,7 @@ $(function () {
             isPaused = 0;
         //pause uploading todo
 
-        /**
-         * 上传文件时选取对应的文件item
-         */
-        function findTheFile(fileName){
-            var files = $('input[name="genefile"]').prop('files'),
-                properFile;
-            for(var i = 0;i < files.length;i++){
-                if(files[i].name == fileName){
-                    properFile = files[i];
-                    break;
-                }
-            }
-            return properFile ? properFile : [];
-        }
+        startupload('first');
 
         /**
          * star to uplaod function
