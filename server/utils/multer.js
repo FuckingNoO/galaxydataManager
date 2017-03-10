@@ -1,8 +1,12 @@
 import multer from 'multer'
-let option = {
-    dest: '',
-    limit: {}
-}
-let upload = multer(option).array('genefile', 10)
 
-export default upload
+let option = {
+    dest: '/Users/fuckingnoob/Documents/galaxydataManager/public/uploadtemp',
+    limits: {}
+}
+
+let M = multer(option)
+
+module.exports = M
+
+

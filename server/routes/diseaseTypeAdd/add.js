@@ -8,6 +8,7 @@ module.exports = async (req, res, next) => {
         let dirpath = '/Users/fuckingnoob/Documents/WitSeq/' + diseaseInfo.diseaseType,
             mode = '0777';
         //todo 文件权限的设置
+        console.log(req);
         await fs.mkdir(dirpath,mode)
         return res.json({
             stateCode: '200',

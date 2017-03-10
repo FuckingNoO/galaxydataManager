@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import M from '../utils/multer'
 let router = Router()
 
 /**
@@ -10,7 +11,7 @@ router.route('/signup').post(require('./signup/signup'))
 router.route('/email').get(require('./emailActive/emailValidate')).post(require('./emailActive/emailActive'))
 router.route('/logout').get(require('./logout/logout'))
 router.route('/user').get(require('./dataplatform/homepage'))
-router.route('/upload').post(require('./file/upload'))
+router.route('/upload_chunk').post(M.array('genefile'), require('./file/upload_chunk'))
 router.route('/download').post(require('./file/download'))
 router.route('/diseasetypeadd').post(require('./diseaseTypeAdd/add'))
 

@@ -1,5 +1,4 @@
 $(function () {
-    var _file_count = 0;
     //disease add modal js
     $(".disease-add-type-btn").click(function (event) {
         event.preventDefault();
@@ -47,7 +46,7 @@ $(function () {
         $('.file-drag-area').css('display', 'none');
 
         //test
-        alert($('input[name="genefile"]').prop('files').length);
+        // alert($('input[name="genefile"]').prop('files').length);
         //tpl inut into tbody
         $('.files-display-area-tbody').append(uploadItem.join('')).end().show();
     })
@@ -68,17 +67,18 @@ $(function () {
     }
     /**
      * form submit listener
+     * event delegate
      */
-    $('.upload_file_item_btn_0').on('click', function (event) {
+    $(document.body).on('click', '.upload_items_btn', function (event) {
         event.preventDefault();
-        alert('hello,world');
         var _this = $(this),
             state = _this.attr('data-state'),
             fileName = _this.attr('data-name'),
             eachSize = 1024,
             totalSize = _this.attr('data-size'),
-            chunks = math.cell(totalSize / eachSize),
+            chunks = Math.ceil(totalSize / eachSize),
             chunk, //this is just a variable for chunks iterator like for(....)
+            $_percentVal = $('.upload-status-column'),
             percent,
             isPaused = 0;
         //pause uploading todo
@@ -97,37 +97,54 @@ $(function () {
             var isLastChunk = (chunk == (chunks - 1)) ? 1 : 0;
 
             if (times == 'first' && isLastChunk == 1) {
-                //todo
+                window.localStorage.setItem(fileName + '_chunk', 0);
+                chunk = 0;
+                isLastChunk = 0;
             }
             //设置分片的开始与结尾
             var segStart = chunk * eachSize,// start
-                segEnd = (chunk + 1) * eachSize > totalSize ? totalSize : (chunk + 1) * eachSize,   //end
-                timeout = 5000;                                                                     // timeout
-                formdata = new FormData();                                                          // formdata obj
-            formdata.append('properFile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
-            formdata.append('fileName', fileName);   //the name of the file
-            formdata.append('totalSize', totalSize); //the total size of the file
-            formdata.append('isLastChunk', isLastChunk);// send isLastChunk variable
-            formdata.append('isFirstUpload', times == "first" ? 1 : 0);
+                segEnd = (chunk + 1) * eachSize > totalSize ? totalSize : (chunk + 1) * eachSize, //end
+                percent = (100 * segEnd / totalSize).toFixed(1),
+                timeout = 5000,                                                                    // timeout
+                fd = new FormData($('#file-upload-form'));                                                          // formdata obj
+            fd.append('properFile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
+            fd.append('fileName', fileName);   //the name of the file
+            fd.append('totalSize', totalSize); //the total size of the file
+            fd.append('isLastChunk', isLastChunk);// send isLastChunk variable
+            fd.append('isFirstUpload', times == "first" ? 1 : 0);// Whether it is the first time to upload
+            /**
+             * ajax submit
+             */
+            $.ajax({
+                type: "post",
+                url: "/upload_chunk",
+                data: {name: 'zhujiahhao'},
+                processData: false,
+                contentType: false,
+                success: function (rs) {
+                    if (rs.stateCode == '200') {
+                        //record the uploaded percentage
+                        window.localStorage.setItem(fileName + '_p', percent);
+                        if (chunk === (chunks - 1)) {
+                            // upload completed
+                            $_percentVal.html('done');
+                            _this.html('已经上传');
+                        } else {
+                            //percentage todo
+                            window.localStorage.setItem(fileName + '_chunk', ++chunk);
+                            $_percentVal.html('已经上传' + percent + '%');
+                            startupload();
+                        }
+                    } else {
+                        alert('上传失败');
+                    }
+                },
+                error: function () {
+                    //test
+                    alert('error');
+                }
+            })
+            /** ajax submit end */
         }
-
-        /**
-         * ajax submit
-         */
-        $.ajax({
-            type: 'post',
-            url: '/upload',
-            data: formdata,
-            processData: false,
-            contentType: false,
-            timeout: timeout,
-            success: function (rs) {
-                //todo
-            },
-            error: function () {
-                //todo
-            }
-        })
-        /** ajax submit end */
     })
 })
