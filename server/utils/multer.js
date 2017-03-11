@@ -1,11 +1,8 @@
 import multer from 'multer'
 
-let option = {
-    dest: '/Users/fuckingnoob/Documents/galaxydataManager/public/uploadtemp',
-    limits: {}
-}
-
-let M = multer(option)
+let M = multer({
+    dest: '/Users/fuckingnoob/Documents/galaxydataManager/public/uploadtemp'
+})
 
 module.exports = M
 

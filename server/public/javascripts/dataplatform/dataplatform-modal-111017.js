@@ -106,7 +106,7 @@ $(function () {
                 segEnd = (chunk + 1) * eachSize > totalSize ? totalSize : (chunk + 1) * eachSize, //end
                 percent = (100 * segEnd / totalSize).toFixed(1),
                 timeout = 5000,                                                                    // timeout
-                fd = new FormData($('#file-upload-form'));                                                          // formdata obj
+                fd = new FormData($('#file-upload-form')[0]);                                                          // formdata obj
             fd.append('properFile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
             fd.append('fileName', fileName);   //the name of the file
             fd.append('totalSize', totalSize); //the total size of the file
@@ -118,7 +118,8 @@ $(function () {
             $.ajax({
                 type: "post",
                 url: "/upload_chunk",
-                data: {name: 'zhujiahhao'},
+                data: fd,
+                timeout: timeout,
                 processData: false,
                 contentType: false,
                 success: function (rs) {
