@@ -26,7 +26,9 @@ $(function () {
      * input value change listener
      */
     $('.local-file-upload-input').change(function () {
-        var u_file,
+        var _this = $(this),
+            files = _this.prop('files'),
+            u_file,
             uploadItem = [],
             file_upload_tpl = $("#file-upload-tpl").html(),
             size,
@@ -34,19 +36,19 @@ $(function () {
             progress;
 
         //this.files iterator
-        for(var i = 0, j = this.files.length;i < j;i++){
+        for(var i = 0, j = files.length; i < j;i++){
             //initialize varies
-            u_file = this.files[i];
+            u_file = files[i];
             size = u_file.size;
             // 初始通过本地记录，判断该文件是否曾经上传过
-            percent = window.localStorage.getItem(u_file[i].name + '_p');
+            percent = window.localStorage.getItem(u_file.name + '_p');
             if(percent && percent != '100.0'){
                 progress = '已上传 ' + percent + '%';
                 //may be something will be added here
             }
             //push upload item in a array called  uploadItem
             uploadItem.push(file_upload_tpl.replace(/{{fileName}}/g, u_file.name).replace(/{{fileSize}}/,
-                u_file.size).replace(/{{uploadPer}}/, '100%').replace(/{{label}}/, i).replace(/{{totalSize}}/, u_file.size))
+                size).replace(/{{uploadPer}}/, '100%').replace(/{{label}}/, i).replace(/{{totalSize}}/, size))
         }
         //toggle block
         $('.files-display-area').show();

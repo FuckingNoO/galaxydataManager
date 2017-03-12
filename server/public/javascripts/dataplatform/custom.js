@@ -10,4 +10,15 @@ function getContent(event, contentType) {
     document.getElementById(contentType).style.display = "block";
     document.getElementById('subdir-name').innerHTML = event.target.innerHTML;
 }
-
+/**
+ * jquery code
+ */
+$(function () {
+    $('input[name=dtcb]').change(function(){
+        if (this.checked) {
+            $('[data-type='+ $(this).val() + ']').show();
+        }else{
+            $('[data-type='+ $(this).val() + ']').hide();
+        }
+    });
+})
