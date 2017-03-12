@@ -30,13 +30,20 @@ $(function () {
             uploadItem = [],
             file_upload_tpl = $("#file-upload-tpl").html(),
             size,
-            percent;
+            percent,
+            progress;
+
         //this.files iterator
         for(var i = 0, j = this.files.length;i < j;i++){
             //initialize varies
             u_file = this.files[i];
-            percent = 0;
             size = u_file.size;
+            // 初始通过本地记录，判断该文件是否曾经上传过
+            percent = window.localStorage.getItem(u_file[i].name + '_p');
+            if(percent && percent != '100.0'){
+                progress = '已上传 ' + percent + '%';
+                //may be something will be added here
+            }
             //push upload item in a array called  uploadItem
             uploadItem.push(file_upload_tpl.replace(/{{fileName}}/g, u_file.name).replace(/{{fileSize}}/,
                 u_file.size).replace(/{{uploadPer}}/, '100%').replace(/{{label}}/, i).replace(/{{totalSize}}/, u_file.size))
@@ -106,7 +113,8 @@ $(function () {
                 segEnd = (chunk + 1) * eachSize > totalSize ? totalSize : (chunk + 1) * eachSize, //end
                 percent = (100 * segEnd / totalSize).toFixed(1),
                 timeout = 5000,                                                                    // timeout
-                fd = new FormData($('#file-upload-form')[0]);                                                          // formdata obj
+                fd = new FormData($('#file-upload-form'));                                                          // formdata obj
+
             fd.append('properFile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
             fd.append('fileName', fileName);   //the name of the file
             fd.append('totalSize', totalSize); //the total size of the file
