@@ -1,6 +1,4 @@
 import { Router } from 'express'
-// import M from '../utils/multer'
-import multer from 'multer'
 let router = Router()
 
 /**
@@ -21,6 +19,6 @@ router.route('/diseasetypeadd').post(require('./diseaseTypeAdd/add'))
  */
 router.route('/test').get(require('./test/test'))
 router.route('/test01').get(require('./test/test01'))
-router.route('/upload').post(multer({ dest: 'uploads/' }).array('file'), require('./test/upload'))
+router.route('/upload').post(require('./test/upload'))
 
 module.exports = router

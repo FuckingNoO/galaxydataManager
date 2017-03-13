@@ -6,36 +6,36 @@
 </head>
 <body>
 <form id="upload-form" method="post" action="/upload" enctype="multipart/form-data">
-    <input type="file" id="file-input" name="file" value="选取文件"></br>
+    <input type="file" id="file-input" name="datas" value="选取文件" multiple="multiple"></br>
     <input type="submit" id="upload-btn" value="提交">
 </form>
 <script src="/javascripts/jquery/jquery-2.2.3.min.js"></script>
-<script>
-    $(function () {
-        $('#upload-btn').on('click',function (e) {
-            e.preventDefault();
-            var fd = new FormData($('#upload-form'));
-            fd.append('thfile', $('#file-input').prop('files')[0]);
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$('#upload-btn').on('click',function (e) {-->
+            <!--e.preventDefault();-->
+            <!--var fd = new FormData($('#upload-form'));-->
+            <!--fd.append('thfile', $('#file-input').prop('files'));-->
 
-            $.ajax({
-                type: 'post',
-                url: '/upload',
-                data: fd,
-                processData: false,
-                contentType: false,
-                success: function (rs) {
-                    if(rs.stateCode == '200') {
-                        alert('success' + rs.data);
-                    }else {
-                        alert('error');
-                    }
-                },
-                error: function () {
-                    alert('error');
-                }
-            })
-        })
-    })
-</script>
+            <!--$.ajax({-->
+                <!--type: 'post',-->
+                <!--url: '/upload',-->
+                <!--data: fd,-->
+                <!--processData: false,-->
+                <!--contentType: false,-->
+                <!--success: function (rs) {-->
+                    <!--if(rs.stateCode == '200') {-->
+                        <!--alert('success' + rs.data);-->
+                    <!--}else {-->
+                        <!--alert('error');-->
+                    <!--}-->
+                <!--},-->
+                <!--error: function () {-->
+                    <!--alert('error');-->
+                <!--}-->
+            <!--})-->
+        <!--})-->
+    <!--})-->
+<!--</script>-->
 </body>
 </html>
