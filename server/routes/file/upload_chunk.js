@@ -10,7 +10,10 @@ module.exports = async (req, res, next) => {
                 msg: 'no permission'
             })
         }
-        console.log(req.files);
+        //test console.log
+        console.log(req.files)
+        console.log('===========')
+        console.log(req.body)
         return res.json({
             'stateCode': '200',
             'msg': 'success'
