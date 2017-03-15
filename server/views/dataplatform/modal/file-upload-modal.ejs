@@ -9,9 +9,9 @@
                     <span class="warning"><i class="fa fa-files-o" aria-hidden="true"></i>请将文件拖拽到此区域</span>
                 </div>
                 <div class="local-file-upload-area">
-                    <form id="file-upload-form" enctype="multipart/form-data">
+                    <form id="file-upload-form" enctype="multipart/form-data" action="/upload_chunk" method="post">
                         <p class="hidden hidden-input">
-                            <input type="file" name="genefile" class="local-file-upload-input" multiple>
+                            <input type="file" name="genefile" class="local-file-upload-input" multiple="multiple">
                             <input type="submit" class="files-upload-form-btn" value="submit"/>
                         </p>
                     </form>

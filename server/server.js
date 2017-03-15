@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')))
  */
 app.use(multer({
   dest: '/Users/fuckingnoob/Documents/galaxydataManager/public/uploadtemp'
-}).array('datas',5))
+}).array('genefile',5))
 /**
  * route partition
  */

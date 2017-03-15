@@ -1,4 +1,5 @@
 /node_modules
 /.idea
+/common
 /server/routes/test
 *.log

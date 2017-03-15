@@ -59,7 +59,12 @@ $(function () {
         //tpl inut into tbody
         $('.files-display-area-tbody').append(uploadItem.join('')).end().show();
     })
-
+    /**
+     *
+     */
+    // $('.files-upload-btn').on('click', function () {
+    //     $('.files-upload-form-btn').trigger('click');
+    // })
     /**
      * 上传文件时选取对应的文件item
      */
@@ -115,9 +120,9 @@ $(function () {
                 segEnd = (chunk + 1) * eachSize > totalSize ? totalSize : (chunk + 1) * eachSize, //end
                 percent = (100 * segEnd / totalSize).toFixed(1),
                 timeout = 5000,                                                                    // timeout
-                fd = new FormData($('#file-upload-form'));                                                          // formdata obj
+                fd = new FormData($('#file-upload-form')[0]);                                                          // formdata obj
 
-            fd.append('properFile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
+            fd.append('genefile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
             fd.append('fileName', fileName);   //the name of the file
             fd.append('totalSize', totalSize); //the total size of the file
             fd.append('isLastChunk', isLastChunk);// send isLastChunk variable
