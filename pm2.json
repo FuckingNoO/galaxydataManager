@@ -1,0 +1,14 @@
+{
+"app": [{
+	"name": "galaxydataplatform",
+	"script": "./server/server.js",
+	"watch": true,
+	"interpreter":"babel-node",	
+	"env": {
+		"NODE_ENV": "development"
+	},
+	"env_production": {
+		"NODE_ENV": "production"
+	}
+}]
+}

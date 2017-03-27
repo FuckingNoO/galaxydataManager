@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./server/server"
+    "start": "babel-node ./server/server",
+	"build": "webpack"
   },
   "dependencies": {
     "@nodemailer/pro": "^1.0.0",
