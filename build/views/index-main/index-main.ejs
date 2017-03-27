@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WitSeq</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- load stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap3/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index-main/index-main.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index-main/index-main-picstyle.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/sweetalert/sweetalert.css" />
+</head>
+<body>
+<section class="canvas">
+    <canvas id="myCanvas"></canvas>
+</section>
+<section class="container-fluid index-main">
+    <form class="index-main-form" role="form">
+        <h2 class="index-main-heading"><i>WitSeq</i></h2>
+        <h4 class="index-main-slogan">你的基因数据管理平台</h4>
+        <ul class="index-main-nav">
+            <li><a href="javascript:void(0)" onClick="getContent(event, 'signup')">注册</a></li>
+            <li><a href="javascript:void(0)" onClick="getContent(event, 'login')">登陆</a></li>
+        </ul>
+        <% include login/login %>
+        <% include signup/signup %>
+    </form>
+</section>
+<footer class="index-main-footer">
+    <p>© 2017 云舟生信 · <a href="#">基因分析</a> · <a href="#">病情预测</a> · <a href="#">使用机构帐号登录</a> · <a href="#">联系我们</a>
+        京 ICP 证 110745 号 · 京公网安备 11010802010035 号 · 出版物经营许可证</p>
+</footer>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!--md5-->
+<script src="/javascripts/jquery/jquery.md5.js"></script>
+<!--index-main-converter-->
+<script src="/javascripts/index-main/index-main-converter.js"></script>
+<!--index-main-ajax-->
+<script src="/javascripts/index-main/index-main-ajax.js"></script>
+<!--index-main-picstyle-->
+<script src="/javascripts/index-main/index-main-picstyle.js"></script>
+<!--sweetalert-->
+<script src="/javascripts/sweetalert/sweetalert.min.js"></script>
+</body>
+</html>

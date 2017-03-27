@@ -1,0 +1,72 @@
+/*file-upload-modal*/
+.file-upload-modal .modal-header h3{
+    font-size: 20px;
+    color: #00c0ef;
+}
+
+.file-upload-modal .modal-footer .file-upload-cancel-btn{
+    border-color: #00c0ef;
+    background: white;
+    color: #00c0ef;
+}
+.file-upload-modal .modal-footer .localfile-upload-btn{
+    border-color: #00c0ef;
+    background: white;
+    color: #00c0ef;
+}
+.file-upload-modal .modal-body .file-drag-area{
+    width: auto;
+    padding-left: 10px;
+    padding-right: 20px;
+    height: 200px;
+    border: dashed;
+    border-color: #b8c7ce;
+    text-align: center;
+}
+.file-upload-modal .modal-body .file-drag-area .warning{
+    color: #999999;
+    font-size: 15px;
+}
+.file-upload-modal .modal-body .local-file-upload-area .hidden{
+    display: none;
+}
+.file-upload-modal .modal-footer .files-upload-btn {
+    border-color: #00c0ef;
+    background: white;
+    color: #00c0ef;
+}
+/*----file upload table display-----*/
+.file-upload-modal .modal-body .files-display-area{
+    display: none;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.file-upload-modal .modal-body .files-display-area thead tr th{
+    color: #999999;
+    text-align: left;
+    font-size: 15px;
+}
+.file-upload-modal .modal-body .files-display-area tbody td {
+    font-size: 10px;
+    text-align: left;
+}
+/*file-upload-modal*/
+/*disease-add-type*/
+.disease-add-modal .modal-header h3{
+    font-size: 20px;
+    color: #999999;
+}
+
+.disease-add-modal .modal-footer .disease-add-type-btn{
+    border-color: #00c0ef;
+    background: white;
+    color: #00c0ef;
+}
+.disease-add-modal .modal-footer .disease-type-cancel-btn{
+    border-color: #00c0ef;
+    background: white;
+    color: #00c0ef;
+}
+

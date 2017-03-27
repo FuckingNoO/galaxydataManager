@@ -1,5 +1,4 @@
 import * as model from '../../model/file/fileOperations'
-import fs from 'fs'
 import Promise from 'bluebird'
 
 module.exports = async (req, res, next) => {

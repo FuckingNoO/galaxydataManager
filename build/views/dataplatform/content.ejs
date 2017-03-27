@@ -1,0 +1,45 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            系统管理
+            <small>Version 2.0</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 系统管理</a></li>
+            <li class="active" id="subdir-name">组织单位</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+
+    <!--sysManagement content-->
+    <% include sysManagement/organization %>
+    <% include sysManagement/user %>
+    <% include sysManagement/role %>
+    <% include sysManagement/permissions %>
+    <% include sysManagement/disk %>
+    <% include sysManagement/sharing %>
+    <!-- /.sysManagementcontent -->
+
+    <!--dataAnalysis content-->
+    <% include dataAnalysis/task %>
+    <% include dataAnalysis/workflow %>
+    <!-- /.dataAnalysiscontent-->
+
+    <!--dataEntity content-->
+    <% include dataEntity/bioexperiments %>
+    <% include dataEntity/datafile %>
+    <% include dataEntity/disease %>
+    <% include dataEntity/filetype %>
+    <% include dataEntity/organ %>
+    <% include dataEntity/sample %>
+    <% include dataEntity/sequence %>
+    <% include dataEntity/species %>
+    <!-- /.dataEntitycontent-->
+
+    <!--disease type content-->
+    <% include diseaseType/diseaseType %>
+    <!--disease type content-->
+    <!-- /.content -->
+</div>

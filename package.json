@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./server/server",
-	"build": "webpack"
+    "build": "webpack"
   },
   "dependencies": {
     "@nodemailer/pro": "^1.0.0",
@@ -20,7 +20,6 @@
     "helmet": "^3.3.0",
     "jade": "~1.11.0",
     "joi": "^10.1.0",
-    "json-loader": "^0.5.4",
     "level-filesystem": "^1.2.0",
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
@@ -37,6 +36,7 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-3": "^6.17.0",
+    "json-loader": "^0.5.4",
     "webpack": "^1.14.0"
   }
 }

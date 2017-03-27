@@ -1,0 +1,200 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/images/cold.jpeg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p><%= username %></p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-cog" aria-hidden="true"></i> <span>系统管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'organization')"><i class="fa fa-circle-o"></i> 组织/单位</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'user')"><i class="fa fa-circle-o"></i> 用户</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'role')"><i class="fa fa-circle-o"></i> 角色</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'permissions')"><i class="fa fa-circle-o"></i> 权限</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'disk')"><i class="fa fa-circle-o"></i>磁盘配额</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'sharing')"><i class="fa fa-circle-o"></i>共享</a></li>
+                </ul>
+            </li>
+            <li class="treeview data_entity">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>数据文件相关的实体</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'bioexperiments')"><i class="fa fa-circle-o"></i>生化实验</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'sample')"><i class="fa fa-circle-o"></i>样本</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'organ')"><i class="fa fa-circle-o"></i>组织器官</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'disease')"><i class="fa fa-circle-o"></i>病症类型</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'sequence')"><i class="fa fa-circle-o"></i>测序技术</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'species')"><i class="fa fa-circle-o"></i>物种</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'datafile')"><i class="fa fa-circle-o"></i>数据文件</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'filetype')"><i class="fa fa-circle-o"></i>文件格式</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>数据分析</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'task')"><i class="fa fa-circle-o"></i>分析任务</a></li>
+                    <li><a class="tablink" href="javascript:void(0)" onClick="getContent(event, 'workflow')"><i class="fa fa-circle-o"></i>工作流</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span>第三方数据平台</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="http://115.159.38.41/galaxy"><i class="fa fa-circle-o"></i> Galaxy</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Icons</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Buttons</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Sliders</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Timeline</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Modals</a></li>
+                </ul>
+            </li>
+            <li class="treeview disease-type-treeview">
+                <a href="javascript:void(0);" onClick="getContent(event, 'diseaseType')">
+                    <i class="fa fa-edit"></i> <span>疾病类型</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="padding: 20px;">
+                    <li><input type="checkbox" name="dtcb" value="1"/><span>呼吸系统疾病</span></li>
+                    <li><input type="checkbox" name="dtcb" value="2"/><span>消化系统疾病</span></li>
+                    <li><input type="checkbox" name="dtcb" value="3"/><span>精神病</span></li>
+                    <li><input type="checkbox" name="dtcb" value="4"/><span>心脏病</span></li>
+                    <li><input type="checkbox" name="dtcb" value="5"/><span>神经病</span></li>
+                    <li><input type="checkbox" name="dtcb" value="6"/><span>其他的疑难疾病</span></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Tables</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../../../../AdminLTE/pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                    <li><a href="../../../../AdminLTE/pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="../../../../AdminLTE/pages/calendar.html">
+                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+                    <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+                </a>
+            </li>
+            <li>
+                <a href="../../../../AdminLTE/pages/mailbox/mailbox.html">
+                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                    <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>Examples</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <!--  pay attention here-->
+                <ul class="treeview-menu">
+                    <li><a href="../../../../AdminLTE/pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+                    <li><a href="../../../../AdminLTE/pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i> <span>Multilevel</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One
+                            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                </ul>
+            </li>
+            <li><a href="../../../../AdminLTE/documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+            <li class="header">用户操作</li>
+            <li><a id="upload_file" data-toggle="modal" data-target="#file_upload_modal"><i class="fa fa-upload" aria-hidden="true"></i> <span>文件上传</span></a></li>
+            <li><a id="add_disease_type" data-toggle="modal" data-target="#disease_add_modal"><i class="fa fa-plus-circle" aria-hidden="true"></i>添加疾病类型</a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

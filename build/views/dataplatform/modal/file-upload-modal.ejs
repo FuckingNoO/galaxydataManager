@@ -1,0 +1,40 @@
+<div class="modal fade file-upload-modal" id="file_upload_modal" tabindex="-1" role="dialog" aria-labelledby="fileuploadmodal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>从本地磁盘上传文件</h3>
+            </div>
+            <div class="modal-body">
+                <div class="file-drag-area">
+                    <span class="warning"><i class="fa fa-files-o" aria-hidden="true"></i>请将文件拖拽到此区域</span>
+                </div>
+                <div class="local-file-upload-area">
+                    <form id="file-upload-form" enctype="multipart/form-data" action="/upload_chunk" method="post">
+                        <p class="hidden hidden-input">
+                            <input type="file" name="genefile" class="local-file-upload-input" multiple="multiple">
+                            <input type="submit" class="files-upload-form-btn" value="submit"/>
+                        </p>
+                    </form>
+                </div>
+                <table class="files-display-area">
+                    <thead>
+                    <tr>
+                        <th>文件</th>
+                        <th>大小</th>
+                        <th>类型</th>
+                        <th>设置</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="files-display-area-tbody"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default localfile-upload-btn">本地文件</button>
+                <button type="button" class="btn btn-default files-upload-btn">上传</button>
+                <button type="button" class="btn btn-default file-upload-cancel-btn" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

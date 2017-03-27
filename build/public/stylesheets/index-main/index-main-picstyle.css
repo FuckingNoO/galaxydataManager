@@ -1,0 +1,20 @@
+#myCanvas{
+    border: 1px;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.a {
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    color: #b8c7ce;
+    font-family: "Comic Sans MS", cursive;
+}
+.tou {
+    font-size: 14px;
+    text-align: center;
+    color: #787878;
+    font-family: "Comic Sans MS", cursive;
+}
