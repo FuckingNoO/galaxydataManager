@@ -88,16 +88,39 @@ $(function () {
         var _this = $(this),
             state = _this.attr('data-state'),
             fileName = _this.attr('data-name'),
-            eachSize = 1024,
+            //each size control: 1M
+            eachSize = 1024 * 1024,
             totalSize = _this.attr('data-size'),
             chunks = Math.ceil(totalSize / eachSize),
             chunk, //this is just a variable for chunks iterator like for(....)
             $_percentVal = $('.upload-status-column'),
             percent,
             isPaused = 0;
-        //pause uploading todo
-
-        startupload('first');
+        //whether the file is larger than 5mb
+        if(totalSize < 1024 * 1024 * 5){
+            var f = new FormData();
+            f.append('genefile',  findTheFile(fileName));
+            f.append('fileName', fileName);
+            f.append('totalSize', totalSize);
+            $.ajax({
+                type: 'post',
+                url: '/upload_chunk',
+                data: f,
+                timeout: 5000,
+                processData: false,
+                contentType: false,
+                success: function (rs) {
+                    if(rs.stateCode == '200'){
+                        _this.html('已经上传');
+                    }
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }else{
+            startupload('first');
+        }
 
         /**
          * star to uplaod function
@@ -122,7 +145,7 @@ $(function () {
                 timeout = 5000,                                                                    // timeout
                 fd = new FormData();                                                          // formdata obj
 
-            fd.append('genefile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunks
+            fd.append('genefile', findTheFile(fileName).slice(segStart, segEnd)); // slice the file into chunk
             fd.append('fileName', fileName);   //the name of the file
             fd.append('totalSize', totalSize); //the total size of the file
             fd.append('isLastChunk', isLastChunk);// send isLastChunk variable
