@@ -39,16 +39,25 @@ $(function () {
         for(var i = 0, j = files.length; i < j;i++){
             //initialize varies
             u_file = files[i];
-            size = u_file.size;
+            size = u_file.size > 1024
+                ? u_file.size / 1024 > 1024
+                ? u_file.size / (1024 * 1024) > 1024
+                ? u_file.size / (1024 * 1024 * 1024 ).toFixed(2) + 'GB'
+                : (u_file.size / (1024 * 1024)).toFixed(2) + 'MB'
+                : (u_file.size / 1024).toFixed(2) + 'KB'
+                : (u_file.size).toFixed(2) + 'B';
+
             // 初始通过本地记录，判断该文件是否曾经上传过
             percent = window.localStorage.getItem(u_file.name + '_p');
             if(percent && percent != '100.0'){
-                progress = '已上传 ' + percent + '%';
+                progress = percent + '%';
                 //may be something will be added here
+            }else{
+                progress = '0%'
             }
             //push upload item in a array called  uploadItem
             uploadItem.push(file_upload_tpl.replace(/{{fileName}}/g, u_file.name).replace(/{{fileSize}}/,
-                size).replace(/{{uploadPer}}/, '100%').replace(/{{label}}/, i).replace(/{{totalSize}}/, size))
+                size).replace(/{{uploadPer}}/g, progress).replace(/{{label}}/, i).replace(/{{totalSize}}/, u_file.size))
         }
         //toggle block
         $('.files-display-area').show();
