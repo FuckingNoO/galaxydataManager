@@ -1,5 +1,4 @@
 import * as model from '../../model/file/fileOperations'
-import Promise from 'bluebird'
 
 module.exports = async (req, res, next) => {
     try {
@@ -9,10 +8,9 @@ module.exports = async (req, res, next) => {
                 msg: 'no permission'
             })
         }
-        //test console.log
-        console.log(req.files)
-        console.log('===========')
-        console.log(req.body)
+        const { originalname, path, size } = req.files.genefile[0]
+        const { type } = req.body
+        await model.file_upload(type, req.session.user, path, originalname, size)
         return res.json({
             'stateCode': '200',
             'msg': 'success'

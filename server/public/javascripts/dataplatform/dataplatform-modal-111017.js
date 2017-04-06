@@ -109,6 +109,7 @@ $(function () {
         if(totalSize < 1024 * 1024 * 5){
             var f = new FormData();
             f.append('genefile',  findTheFile(fileName));
+            f.append('type', 'heart');
             f.append('fileName', fileName);
             f.append('totalSize', totalSize);
             $.ajax({
@@ -121,6 +122,7 @@ $(function () {
                 success: function (rs) {
                     if(rs.stateCode == '200'){
                         _this.html('已经上传');
+                        // _this.parent().parent().next().
                     }
                 },
                 error: function () {
